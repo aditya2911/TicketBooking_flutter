@@ -36,82 +36,125 @@ class HomeWidget extends ConsumerWidget {
             )
           ],
         ),
-        body: Expanded(
-          child: Column(children: [
-            Container(
-              color: Colors.black,
-              width: 1.sw,
-              height: 0.65.sh,
-              child: Stack(
-                children: [
-                  // Image.network(
-                  //     "https://images.catchnews.com/upload/2018/06/21/surveen_118955_730x419.jpg"),
-                  Align(
-                      alignment: Alignment.topCenter,
-                      child: SizedBox(
-                          height: 0.5.sh,
-                          child: Image.asset(
-                            "assets/images/sintel.jpg",
-                            fit: BoxFit.fitHeight,
-                          ))),
-                  Container(
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [
-                          Colors.black,
-                          Colors.black.withOpacity(0.87),
-                          Colors.transparent,
-                          Colors.black.withOpacity(0.87),
-                          Colors.black,
-                        ],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight)),
-                    height: double.infinity,
-                    width: 1.sw,
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [
-                          Colors.black.withOpacity(0.35),
-                          Colors.transparent,
-                          Colors.black.withOpacity(0.35),
-                        ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter)),
-                    height: double.infinity,
-                    width: 1.sw,
-                  ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                      height: 0.28.sh,
-                      width: 1.sw,
-                      color: Colors.transparent,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.w),
-                        child: Column(children: [
-                          Image.asset("assets/images/sintel_title.png"),
-                          Container(
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: const [
-                                  Text("2022"),
-                                  Text("."),
-                                  Text("Hindi"),
-                                  Text("."),
-                                  Text("Drama"),
-                                  Text("."),
-                                ]),
-                          )
-                        ]),
+        body: Column(
+          children: [
+            Expanded(
+              child: Column(children: [
+                Container(
+                  color: Colors.black,
+                  width: 1.sw,
+                  height: 0.65.sh,
+                  child: Stack(
+                    children: [
+                      // Image.network(
+                      //     "https://images.catchnews.com/upload/2018/06/21/surveen_118955_730x419.jpg"),
+                      Align(
+                          alignment: Alignment.topCenter,
+                          child: SizedBox(
+                              height: 0.5.sh,
+                              child: Image.asset(
+                                "assets/images/sintel.jpg",
+                                fit: BoxFit.fitHeight,
+                              ))),
+                      Container(
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [
+                              Colors.black,
+                              Colors.black.withOpacity(0.75),
+                              Colors.transparent,
+                              Colors.black.withOpacity(0.75),
+                              Colors.black,
+                            ],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight)),
+                        height: double.infinity,
+                        width: 1.sw,
                       ),
-                    ),
-                  )
-                ],
-              ),
-            )
-          ]),
+                      Container(
+                        decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                                colors: [
+                              Colors.black.withOpacity(0.35),
+                              Colors.transparent,
+                              Colors.black.withOpacity(0.35),
+                            ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter)),
+                        height: double.infinity,
+                        width: 1.sw,
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: 0.28.sh,
+                          width: 1.sw,
+                          color: Colors.transparent,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8.w),
+                            child: Column(children: [
+                              Image.asset("assets/images/sintel_title.png"),
+                              Container(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    Text("2022"),
+                                    Text("."),
+                                    Text("Hindi"),
+                                    Text("."),
+                                    Text(
+                                      "Drama",
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                    Text("."),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                height: 30.h,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      height: 30.h,
+                                      width: 200.w,
+                                      child: ElevatedButton(
+                                        onPressed: () {},
+                                        child: Text("Watch Now"),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 8.w,
+                                    ),
+                                    Container(
+                                      // color: Colors.blue,
+                                      decoration: BoxDecoration(
+                                          // color: Colors.red,
+                                          color: Colors.red,
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
+                                      child: IconButton(
+                                        padding: EdgeInsets.zero,
+                                        icon: Center(
+                                            child:
+                                                Center(child: Icon(Icons.add))),
+                                        onPressed: () {},
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ]),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ]),
+            ),
+          ],
         ),
       )),
     );
