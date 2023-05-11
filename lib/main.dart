@@ -21,7 +21,16 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
+            fontFamily: 'eFamily',
             primarySwatch: Colors.blue,
+            textTheme: const TextTheme(
+              bodyMedium: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold),
+              bodySmall: TextStyle(color: Colors.yellow),
+              bodyLarge: TextStyle(color: Colors.green),
+            ),
           ),
           home: const HomeWidget(),
         );
@@ -50,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(  
+    return Scaffold(
       appBar: AppBar(
         title: Text(widget.title1),
       ),
