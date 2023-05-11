@@ -16,6 +16,11 @@ class HomeWidget extends ConsumerWidget {
       initOpacity: 0.0,
       child: SafeArea(
           child: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home",),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home")
+        ]),
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           elevation: 0,
@@ -118,7 +123,7 @@ class HomeWidget extends ConsumerWidget {
                                   children: [
                                     Container(
                                       height: 30.h,
-                                      width: 200.w,
+                                      width: 180.w,
                                       child: ElevatedButton(
                                         onPressed: () {},
                                         child: Text("Watch Now"),
@@ -129,6 +134,8 @@ class HomeWidget extends ConsumerWidget {
                                     ),
                                     Container(
                                       // color: Colors.blue,
+                                      width: 30.w,
+                                      height: 30.w,
                                       decoration: BoxDecoration(
                                           // color: Colors.red,
                                           color: Colors.red,
@@ -137,8 +144,11 @@ class HomeWidget extends ConsumerWidget {
                                       child: IconButton(
                                         padding: EdgeInsets.zero,
                                         icon: Center(
-                                            child:
-                                                Center(child: Icon(Icons.add))),
+                                            child: Center(
+                                                child: Icon(
+                                          Icons.add,
+                                          size: 20,
+                                        ))),
                                         onPressed: () {},
                                       ),
                                     )
