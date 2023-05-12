@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,28 +22,109 @@ class HomeWidget extends ConsumerWidget {
         bottomNavigationBar: const BottomBar(),
         backgroundColor: const Color(0xff0f1014),
         extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          leading: IconButton(
-              icon: Image.asset("assets/images/netflix_logo0.png",
-                  fit: BoxFit.contain),
-              onPressed: () {},
-              iconSize: 10),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.cast),
-              iconSize: 20.sp,
-            )
-          ],
-        ),
-        body: Column(
-          children: const [
-            MovieCarousel(),
-          ],
+        appBar: MyAppBar(),
+        body: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Container(
+            height: 100.sh,
+            width: 100.sw,
+            child: Column(
+              children: [MovieCarousel(), WatchMore()],
+            ),
+          ),
         ),
       )),
+    );
+  }
+}
+
+class MyAppBar extends StatelessWidget with PreferredSizeWidget {
+  const MyAppBar({
+    super.key,
+  });
+
+  @override
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      leading: IconButton(
+          icon: Image.asset("assets/images/netflix_logo0.png",
+              fit: BoxFit.contain),
+          onPressed: () {},
+          iconSize: 10),
+      actions: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.cast),
+          iconSize: 20.sp,
+        )
+      ],
+    );
+  }
+}
+
+class WatchMore extends StatelessWidget {
+  const WatchMore({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: MyListBuilder(),
+      ),
+    );
+  }
+}
+
+class MyListBuilder extends StatelessWidget {
+  const MyListBuilder({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 100.sw,
+      decoration: BoxDecoration(),
+      child: Column(children: [
+        Container(
+            width: 100.sw,
+            child: Text(
+              "Continue Watching for Aditya Salunke",
+              style: TextStyle(fontSize: 14.sp),
+            )),
+        SizedBox(
+          height: 4.h,
+        ),
+        Container(
+          height: 87.h,
+          width: 100.sw,
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              shrinkWrap: true,
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return Container(
+                    margin: EdgeInsets.all(4),
+                    width: 0.45.sw,
+                    height: 0.1.sh,
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(4)),
+                    child: Text(
+                      'text ',
+                      style: TextStyle(fontSize: 16.0),
+                    ));
+              }),
+        )
+      ]),
     );
   }
 }
@@ -54,143 +136,141 @@ class MovieCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Column(children: [
-        Container(
-          color: const Color(0xff0f1014),
-          width: 1.sw,
-          height: 0.65.sh,
-          child: Stack(
-            children: [
-              // Image.network(
-              //     "https://images.catchnews.com/upload/2018/06/21/surveen_118955_730x419.jpg"),
-              SizedBox(
-                height: 2.h,
-              ),
-              Align(
-                  alignment: Alignment.topCenter,
-                  child: SizedBox(
-                      height: 0.5.sh,
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                        child: Image.asset(
-                          "assets/images/sintel.jpg",
-                          fit: BoxFit.fitHeight,
-                        ),
-                      ))),
-              Container(
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                  const Color(0xff0f1014),
-                  const Color(0xff0f1014).withOpacity(0.85),
-                  Colors.transparent,
-                  const Color(0xff0f1014).withOpacity(0.85),
-                  const Color(0xff0f1014),
-                ], begin: Alignment.centerLeft, end: Alignment.centerRight)),
-                height: double.infinity,
-                width: 1.sw,
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                  const Color(0xff0f1014).withOpacity(0.35),
-                  Colors.transparent,
-                  const Color(0xff0f1014).withOpacity(0.35),
-                ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
-                height: double.infinity,
-                width: 1.sw,
-              ),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: Container(
-                  height: 0.28.sh,
-                  width: 1.sw,
-                  color: Colors.transparent,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.w),
-                    child: Column(children: [
-                      Image.asset("assets/images/sintel_title.png"),
-                      SizedBox(
-                        width: 180.w,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: const [
-                            Text("2022"),
-                            Text("."),
-                            Text("Hindi"),
-                            Text("."),
-                            Text(
-                              "Drama",
-                            ),
-                            Text("."),
-                            Text(
-                              "Thriiller",
-                            ),
-                          ],
-                        ),
+    return Column(children: [
+      Container(
+        color: const Color(0xff0f1014),
+        width: 1.sw,
+        height: 0.65.sh,
+        child: Stack(
+          children: [
+            // Image.network(
+            //     "https://images.catchnews.com/upload/2018/06/21/surveen_118955_730x419.jpg"),
+            SizedBox(
+              height: 2.h,
+            ),
+            Align(
+                alignment: Alignment.topCenter,
+                child: SizedBox(
+                    height: 0.5.sh,
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                      child: Image.asset(
+                        "assets/images/sintel.jpg",
+                        fit: BoxFit.fitHeight,
                       ),
-                      SizedBox(
-                        height: 15.h,
+                    ))),
+            Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                const Color(0xff0f1014),
+                const Color(0xff0f1014).withOpacity(0.85),
+                Colors.transparent,
+                const Color(0xff0f1014).withOpacity(0.85),
+                const Color(0xff0f1014),
+              ], begin: Alignment.centerLeft, end: Alignment.centerRight)),
+              height: double.infinity,
+              width: 1.sw,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                const Color(0xff0f1014).withOpacity(0.35),
+                Colors.transparent,
+                const Color(0xff0f1014).withOpacity(0.35),
+              ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+              height: double.infinity,
+              width: 1.sw,
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                height: 0.28.sh,
+                width: 1.sw,
+                color: Colors.transparent,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
+                  child: Column(children: [
+                    Image.asset("assets/images/sintel_title.png"),
+                    SizedBox(
+                      width: 180.w,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: const [
+                          Text("2022"),
+                          Text("."),
+                          Text("Hindi"),
+                          Text("."),
+                          Text(
+                            "Drama",
+                          ),
+                          Text("."),
+                          Text(
+                            "Thriiller",
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        height: 28.h,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              // decoration: const BoxDecoration(
-                              //     gradient: LinearGradient(
-                              //         colors: [Color(0xff212227)],
-                              //         begin: Alignment.centerLeft,
-                              //         end: Alignment.centerRight)),
-                              height: 30.h,
-                              width: 180.w,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color(0xff212227),
-                                ),
-                                onPressed: () {},
-                                child: const Text(
-                                  "Watch Now",
-                                  style: TextStyle(fontSize: 10),
-                                ),
+                    ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    SizedBox(
+                      height: 28.h,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            // decoration: const BoxDecoration(
+                            //     gradient: LinearGradient(
+                            //         colors: [Color(0xff212227)],
+                            //         begin: Alignment.centerLeft,
+                            //         end: Alignment.centerRight)),
+                            height: 30.h,
+                            width: 180.w,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xff212227),
+                              ),
+                              onPressed: () {},
+                              child: const Text(
+                                "Watch Now",
+                                style: TextStyle(fontSize: 10),
                               ),
                             ),
-                            SizedBox(
-                              width: 8.w,
+                          ),
+                          SizedBox(
+                            width: 8.w,
+                          ),
+                          Container(
+                            // color: Colors.blue,
+                            width: 30.w,
+                            height: 30.w,
+                            decoration: BoxDecoration(
+                                color: const Color(0xff212227),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: IconButton(
+                              padding: EdgeInsets.zero,
+                              icon: const Center(
+                                  child: Center(
+                                      child: Icon(
+                                Icons.add,
+                                size: 15,
+                                color: Colors.white,
+                              ))),
+                              onPressed: () {},
                             ),
-                            Container(
-                              // color: Colors.blue,
-                              width: 30.w,
-                              height: 30.w,
-                              decoration: BoxDecoration(
-                                  color: const Color(0xff212227),
-                                  borderRadius: BorderRadius.circular(5)),
-                              child: IconButton(
-                                padding: EdgeInsets.zero,
-                                icon: const Center(
-                                    child: Center(
-                                        child: Icon(
-                                  Icons.add,
-                                  size: 15,
-                                  color: Colors.white,
-                                ))),
-                                onPressed: () {},
-                              ),
-                            )
-                          ],
-                        ),
-                      )
-                    ]),
-                  ),
+                          )
+                        ],
+                      ),
+                    )
+                  ]),
                 ),
-              )
-            ],
-          ),
-        )
-      ]),
-    );
+              ),
+            )
+          ],
+        ),
+      )
+    ]);
   }
 }
 
