@@ -6,6 +6,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pixel_perfect/pixel_perfect.dart';
 
+import '../common_components/my_list_builder.dart';
+
 class HomeWidget extends ConsumerWidget {
   const HomeWidget({super.key});
 
@@ -77,54 +79,8 @@ class WatchMore extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: MyListBuilder(),
+        child: MyListBuilder(title: "Watch Later", size: 5),
       ),
-    );
-  }
-}
-
-class MyListBuilder extends StatelessWidget {
-  const MyListBuilder({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 100.sw,
-      decoration: BoxDecoration(),
-      child: Column(children: [
-        Container(
-            width: 100.sw,
-            child: Text(
-              "Continue Watching for Aditya Salunke",
-              style: TextStyle(fontSize: 14.sp),
-            )),
-        SizedBox(
-          height: 4.h,
-        ),
-        Container(
-          height: 87.h,
-          width: 100.sw,
-          child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              shrinkWrap: true,
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return Container(
-                    margin: EdgeInsets.all(4),
-                    width: 0.45.sw,
-                    height: 0.1.sh,
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(4)),
-                    child: Text(
-                      'text ',
-                      style: TextStyle(fontSize: 16.0),
-                    ));
-              }),
-        )
-      ]),
     );
   }
 }
