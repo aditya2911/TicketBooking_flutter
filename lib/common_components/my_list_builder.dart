@@ -34,9 +34,9 @@ class MyListBuilder extends StatelessWidget {
               itemCount: size,
               itemBuilder: (context, index) {
                 return Container(
-                    margin: EdgeInsets.all(8),
-                    width: 0.25.sw,
-                    height: 80.sh,
+                    margin: EdgeInsets.all( 4),
+                    width: 80.w,
+                    height: 200.h,
                     decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(4)),

@@ -11,7 +11,7 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0,
+      elevation: 5,
       backgroundColor: Colors.transparent,
       leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
       actions: [IconButton(onPressed: () {}, icon: Icon((Icons.bookmark)))],
@@ -29,41 +29,16 @@ class DetailInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      bottomNavigationBar: getBottomNavigationBar(),
       extendBodyBehindAppBar: true,
       backgroundColor: Color(0xff161b2f),
-      bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 0.80.sw,
-            height: 40.h,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xffe7134b),
-                    shape: RoundedRectangleBorder()),
-                child: Text("Book Tickets")),
-          ),
-        ],
-      ),
       appBar: MyAppBar(),
-      body: Column(
+      body: ListView(
         children: [
-          Flexible(
-            child: Container(
-                height: 0.40.sh,
-                child: Image.asset(
-                  "assets/images/irishman.jpg",
-                  fit: BoxFit.cover,
-                )),
-          ),
+          ImageContainer(),
           Container(
-            height: 0.60.sh,
             width: 1.sw,
-            padding: EdgeInsets.only(left: 24.sp, top: 24.sp, right: 16.sp),
+            padding: EdgeInsets.only(left: 16.sp, top: 24.sp, right: 16.sp),
             decoration: BoxDecoration(
                 // color: Color(0xff161b2f),
                 color: Colors.transparent,
@@ -81,58 +56,125 @@ class DetailInfo extends StatelessWidget {
                 SizedBox(
                   height: 4.h,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    RatingBar(
-                        itemPadding: EdgeInsets.all(2),
-                        initialRating: 3.5,
-                        itemSize: 20,
-                        glowRadius: 0,
-                        glowColor: Colors.transparent,
-                        ratingWidget: RatingWidget(
-                            full: Icon(
-                              Icons.star,
-                              color: Color(0xffe7134b),
-                              size: 4,
-                            ),
-                            half: Icon(
-                              Icons.star_half,
-                              color: Color(0xffe7134b),
-                              size: 4,
-                            ),
-                            empty: Icon(
-                              Icons.star_outline,
-                              color: Colors.grey.withOpacity(0.75),
-                              size: 4,
-                            )),
-                        onRatingUpdate: (rating) {}),
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.share, color: Color(0xffe7134b)))
-                  ],
-                ),
+                RatingContainer(),
                 SizedBox(
                   height: 8.h,
                 ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis convallis velit. Maecenas interdum commodo felis, in euismod libero imperdiet vel. Aenean non est consequat, sollicitudin nisi eu, eleifend quam. Etiam dui quam, ornare pulvinar lorem ac, posuere vehicula tellus. Nam vitae magna interdum lacus interdum sollicitudin a sed libero. Proin scelerisque lorem id massa porttitor convallis. Quisque nibh ante, hendrerit ac iaculis eu, tincidunt sit amet augue. Duis mollis diam gravida purus porttitor, eget blandit velit vehicula. Maecenas eget maximus arcu, vitae commodo mi. Maecenas aliquet diam eu mi tristique ultrices. Fusce rutrum sodales tincidunt. Ut faucibus elit sed augue cursus tincidunt. In sodales fermentum interdum. Etiam mollis mattis ante. Nulla elementum tristique ullamcorper. Phasellus venenatis accumsan quam ut molestie.",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                        fontWeight: FontWeight.w300, fontSize: 11.5.sp),
-                  ),
-                ),
+                FlickInfo(),
                 SizedBox(
                   height: 8.h,
                 ),
                 MyListBuilder(title: "Cast", size: 5),
               ],
             ),
-          )
+          ),
         ],
       ),
     ));
+  }
+}
+
+class FlickInfo extends StatelessWidget {
+  const FlickInfo({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Text(
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam quis convallis velit. Maecenas interdum commodo felis, in euismod libero imperdiet vel. Aenean non est consequat, sollicitudin nisi eu, eleifend quam. Etiam dui quam, ornare pulvinar lorem ac, posuere vehicula tellus. Nam vitae magna interdum lacus interdum sollicitudin a sed libero. Proin scelerisque lorem id massa porttitor convallis. Quisque nibh ante, hendrerit ac iaculis eu, tincidunt sit amet augue. Duis mollis diam gravida purus porttitor, eget blandit velit vehicula. Maecenas eget maximus arcu, vitae commodo mi. Maecenas aliquet diam eu mi tristique ultrices. Fusce rutrum sodales tincidunt. Ut faucibus elit sed augue cursus tincidunt. In sodales fermentum interdum. Etiam mollis mattis ante. Nulla elementum tristique ullamcorper. Phasellus venenatis accumsan quam ut molestie.",
+        textAlign: TextAlign.left,
+        style: TextStyle(fontWeight: FontWeight.w300, fontSize: 11.5.sp),
+      ),
+    );
+  }
+}
+
+class RatingContainer extends StatelessWidget {
+  const RatingContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        RatingBar(
+            itemPadding: EdgeInsets.all(2),
+            initialRating: 3.5,
+            itemSize: 20,
+            glowRadius: 0,
+            glowColor: Colors.transparent,
+            ratingWidget: RatingWidget(
+                full: Icon(
+                  Icons.star,
+                  color: Color(0xffe7134b),
+                  size: 4,
+                ),
+                half: Icon(
+                  Icons.star_half,
+                  color: Color(0xffe7134b),
+                  size: 4,
+                ),
+                empty: Icon(
+                  Icons.star_outline,
+                  color: Colors.grey.withOpacity(0.75),
+                  size: 4,
+                )),
+            onRatingUpdate: (rating) {}),
+        IconButton(
+            onPressed: () {}, icon: Icon(Icons.share, color: Color(0xffe7134b)))
+      ],
+    );
+  }
+}
+
+class ImageContainer extends StatelessWidget {
+  const ImageContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: Container(
+          height: 0.40.sh,
+          child: Image.asset(
+            "assets/images/irishman.jpg",
+            fit: BoxFit.cover,
+          )),
+    );
+  }
+}
+
+class getBottomNavigationBar extends StatelessWidget {
+  const getBottomNavigationBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: 0.80.sw,
+          height: 40.h,
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xffe7134b),
+                  shape: RoundedRectangleBorder()),
+              child: Text("Book Tickets")),
+        ),
+      ],
+    );
   }
 }

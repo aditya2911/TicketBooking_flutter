@@ -11,7 +11,7 @@ class WatchMore extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(4.0),
         child: MyListBuilder(title: "Watch Later", size: 5),
       ),
     );

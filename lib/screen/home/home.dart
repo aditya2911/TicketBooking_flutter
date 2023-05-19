@@ -28,16 +28,21 @@ class HomeWidget extends ConsumerWidget {
         bottomNavigationBar: const BottomBar(),
         backgroundColor: const Color(0xff0f1014),
         extendBodyBehindAppBar: true,
-        appBar: MyAppBar(),
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Container(
-            height: 100.sh,
-            width: 100.sw,
-            child: Column(
-              children: [MovieCarousel(), WatchMore()],
+        body: Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  if (index == 0) {
+                    return MovieCarousel();
+                  } else {
+                    return WatchMore();
+                  }
+                },
+              ),
             ),
-          ),
+          ],
         ),
       )),
     );
