@@ -44,6 +44,7 @@ dependencies:
   flutter_screenutil: ^5.7.0
   carousel_slider: ^4.2.1
   flutter_rating_bar: ^4.0.1
+  date_picker_timetable: ^0.0.2
 
 dev_dependencies:
   flutter_test:

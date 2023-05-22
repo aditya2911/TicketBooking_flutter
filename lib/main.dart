@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ticket_booking/screen/buy_ticket/buy_ticket.dart';
 import 'package:ticket_booking/screen/detail_info/components/detail_info.dart';
 import 'package:ticket_booking/screen/home/home.dart';
 
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
+            useMaterial3: true,
             fontFamily: 'eFamily',
             primarySwatch: Colors.blue,
             textTheme: const TextTheme(
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
               bodyLarge: TextStyle(color: Colors.green),
             ),
           ),
-          home: const DetailInfo(),
+          home: const BuyTicket(),
         );
       },
     );

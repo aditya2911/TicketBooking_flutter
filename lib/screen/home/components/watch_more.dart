@@ -9,11 +9,10 @@ class WatchMore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: MyListBuilder(title: "Watch Later", size: 5),
-      ),
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.all(4.0),
+      child: MyListBuilder(title: "Watch Later", size: 5),
     );
   }
 }

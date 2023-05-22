@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ticket_booking/common_components/my_list_builder.dart';
+import 'package:ticket_booking/screen/home/home.dart';
 
 class MyAppBar extends StatelessWidget with PreferredSizeWidget {
   const MyAppBar({super.key});
@@ -31,44 +32,49 @@ class DetailInfo extends StatelessWidget {
         child: Scaffold(
       bottomNavigationBar: getBottomNavigationBar(),
       extendBodyBehindAppBar: true,
+      extendBody: true,
       backgroundColor: Color(0xff161b2f),
       appBar: MyAppBar(),
-      body: ListView(
-        children: [
-          ImageContainer(),
-          Container(
-            width: 1.sw,
-            padding: EdgeInsets.only(left: 16.sp, top: 24.sp, right: 16.sp),
-            decoration: BoxDecoration(
-                // color: Color(0xff161b2f),
-                color: Colors.transparent,
-                borderRadius: BorderRadius.horizontal(
-                    left: Radius.circular(24.r), right: Radius.circular(24.r))),
-            child: Column(
-              children: [
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    "The Irish Man",
-                    style: TextStyle(fontSize: 28.sp),
+      body: Align(
+        alignment: Alignment.topCenter,
+        child: ListView(
+          children: [
+            ImageContainer(),
+            Container(
+              width: 1.sw,
+              padding: EdgeInsets.only(left: 16.sp, top: 24.sp, right: 16.sp),
+              decoration: BoxDecoration(
+                  // color: Color(0xff161b2f),
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.horizontal(
+                      left: Radius.circular(24.r),
+                      right: Radius.circular(24.r))),
+              child: Column(
+                children: [
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      "The Irish Man",
+                      style: TextStyle(fontSize: 28.sp),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: 4.h,
-                ),
-                RatingContainer(),
-                SizedBox(
-                  height: 8.h,
-                ),
-                FlickInfo(),
-                SizedBox(
-                  height: 8.h,
-                ),
-                MyListBuilder(title: "Cast", size: 5),
-              ],
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  RatingContainer(),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  FlickInfo(),
+                  SizedBox(
+                    height: 8.h,
+                  ),
+                  MyListBuilder(title: "Cast", size: 5),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ));
   }
@@ -139,14 +145,12 @@ class ImageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: Container(
-          height: 0.40.sh,
-          child: Image.asset(
-            "assets/images/irishman.jpg",
-            fit: BoxFit.cover,
-          )),
-    );
+    return Container(
+        height: 0.40.sh,
+        child: Image.asset(
+          "assets/images/irishman.jpg",
+          fit: BoxFit.cover,
+        ));
   }
 }
 
@@ -168,7 +172,13 @@ class getBottomNavigationBar extends StatelessWidget {
             borderRadius: BorderRadius.circular(30),
           ),
           child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => HomeWidget(),
+                  ),
+                );
+              },
               style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xffe7134b),
                   shape: RoundedRectangleBorder()),

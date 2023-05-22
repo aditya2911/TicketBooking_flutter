@@ -31,15 +31,12 @@ class HomeWidget extends ConsumerWidget {
         body: Column(
           children: [
             Expanded(
-              child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  if (index == 0) {
-                    return MovieCarousel();
-                  } else {
-                    return WatchMore();
-                  }
-                },
+              child: ListView(
+                children: [
+                  MovieCarousel(),
+                  WatchMore(),
+                  WatchMore(),
+                ],
               ),
             ),
           ],
