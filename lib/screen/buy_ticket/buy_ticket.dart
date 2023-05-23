@@ -1,3 +1,4 @@
+import 'package:date_picker_timetable/date_picker_timetable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,6 +9,17 @@ class BuyTicket extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: Container(
+          margin: EdgeInsets.all(8.sp),
+          width: 80.sw,
+          height: 40.h,
+          child: ElevatedButton(
+              onPressed: () {},
+              child: Text(
+                "Buy",
+                style: TextStyle(fontSize: 14.sp),
+              )),
+        ),
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -23,7 +35,7 @@ class BuyTicket extends StatelessWidget {
                 color: Colors.white,
               )),
         ),
-        body: Column(
+        body: ListView(
           children: [
             SizedBox(
               height: 24.h,
@@ -63,19 +75,27 @@ class BuyTicket extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 8.h,
+              height: 24.h,
             ),
-            // Column(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     DatePickerDialog(
-            //       keyboardType: TextInputType.datetime,
-            //       initialDate: DateTime.now(),
-            //       firstDate: DateTime.now(),
-            //       lastDate: DateTime(2024, 5, 3, 1),
-            //     ),
-            //   ],
-            // )
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 4.w),
+              child: DatePicker(
+                DateTime.now(),
+                height: MediaQuery.of(context).size.width < 400 ? 90.h : 70.h,
+                animateToSelection: true,
+                initialSelectedDate: DateTime.now(),
+                selectionColor: Colors.black,
+                selectedTextColor: Colors.white,
+                deactivatedColor: Colors.green,
+                monthTextStyle: TextStyle(color: Colors.grey),
+                dayTextStyle: TextStyle(color: Colors.grey),
+                dateTextStyle: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 24.sp,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
           ],
         ),
       ),
