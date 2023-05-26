@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ticket_booking/screen/buy_ticket/buy_ticket.dart';
 import 'package:ticket_booking/screen/detail_info/components/detail_info.dart';
+import 'package:ticket_booking/screen/home/components/watch_more.dart';
 import 'package:ticket_booking/screen/home/home.dart';
 
 void main() {
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
               bodyLarge: TextStyle(color: Colors.green),
             ),
           ),
-          home: const BuyTicket(),
+          home: const DetailInfo(),
         );
       },
     );

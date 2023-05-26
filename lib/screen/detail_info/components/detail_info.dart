@@ -33,7 +33,7 @@ class DetailInfo extends StatelessWidget {
       bottomNavigationBar: getBottomNavigationBar(),
       extendBodyBehindAppBar: true,
       extendBody: true,
-      backgroundColor: Color(0xff161b2f),
+      backgroundColor: Color.fromARGB(255, 25, 26, 31),
       appBar: MyAppBar(),
       body: Align(
         alignment: Alignment.topCenter,
@@ -161,30 +161,16 @@ class getBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          width: 0.80.sw,
-          height: 40.h,
-          decoration: BoxDecoration(
-            color: Colors.transparent,
-            borderRadius: BorderRadius.circular(30),
-          ),
-          child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => HomeWidget(),
-                  ),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xffe7134b),
-                  shape: RoundedRectangleBorder()),
-              child: Text("Book Tickets")),
-        ),
-      ],
+    return Container(
+      margin: EdgeInsets.all(8.sp),
+      width: 80.sw,
+      height: 40.h,
+      child: ElevatedButton(
+          onPressed: () {},
+          child: Text(
+            "Book Tickets",
+            style: TextStyle(fontSize: 14.sp),
+          )),
     );
   }
 }

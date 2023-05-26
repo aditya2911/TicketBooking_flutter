@@ -17,8 +17,6 @@ class MovieCarousel extends StatelessWidget {
         height: 0.65.sh,
         child: Stack(
           children: [
-            // Image.network(
-            //     "https://images.catchnews.com/upload/2018/06/21/surveen_118955_730x419.jpg"),
             SizedBox(
               height: 2.h,
             ),
@@ -103,8 +101,8 @@ class MovieCarousel extends StatelessWidget {
                             width: 180.w,
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xff212227),
-                              ),
+                                  backgroundColor: Colors.white10,
+                                  foregroundColor: Colors.white),
                               onPressed: () {},
                               child: const Text(
                                 "Watch Now",
