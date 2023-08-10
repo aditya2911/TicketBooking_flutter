@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ticket_booking/screen/detail_info/components/detail_info.dart';
 
 class MyListBuilder extends StatelessWidget {
   final String title;
@@ -14,9 +15,9 @@ class MyListBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 100.sw,
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       child: Column(children: [
-        Container(
+        SizedBox(
             width: 100.sw,
             child: Text(
               title,
@@ -25,7 +26,7 @@ class MyListBuilder extends StatelessWidget {
         SizedBox(
           height: 4.h,
         ),
-        Container(
+        SizedBox(
           height: 87.h,
           width: 100.sw,
           child: ListView.builder(
@@ -33,17 +34,23 @@ class MyListBuilder extends StatelessWidget {
               shrinkWrap: true,
               itemCount: size,
               itemBuilder: (context, index) {
-                return Container(
-                    margin: EdgeInsets.all( 4),
-                    width: 80.w,
-                    height: 200.h,
-                    decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(4)),
-                    child: Text(
-                      "title",
-                      style: TextStyle(fontSize: 16.0),
-                    ));
+                return InkWell(
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const DetailInfo()));
+                  },
+                  child: Container(
+                      margin: const EdgeInsets.all(4),
+                      width: 80.w,
+                      height: 200.h,
+                      decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(4)),
+                      child: const Text(
+                        "title",
+                        style: TextStyle(fontSize: 16.0),
+                      )),
+                );
               }),
         )
       ]),

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ticket_booking/common_components/my_list_builder.dart';
-import 'package:ticket_booking/screen/home/home.dart';
 
-class MyAppBar extends StatelessWidget with PreferredSizeWidget {
+class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({super.key});
 
   @override
@@ -14,8 +11,10 @@ class MyAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       elevation: 5,
       backgroundColor: Colors.transparent,
-      leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
-      actions: [IconButton(onPressed: () {}, icon: Icon((Icons.bookmark)))],
+      leading: IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back)),
+      actions: [
+        IconButton(onPressed: () {}, icon: const Icon((Icons.bookmark)))
+      ],
     );
   }
 
@@ -30,16 +29,16 @@ class DetailInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      bottomNavigationBar: getBottomNavigationBar(),
+      bottomNavigationBar: const getBottomNavigationBar(),
       extendBodyBehindAppBar: true,
       extendBody: true,
-      backgroundColor: Color.fromARGB(255, 25, 26, 31),
-      appBar: MyAppBar(),
+      backgroundColor: const Color.fromARGB(255, 25, 26, 31),
+      appBar: const MyAppBar(),
       body: Align(
         alignment: Alignment.topCenter,
         child: ListView(
           children: [
-            ImageContainer(),
+            const ImageContainer(),
             Container(
               width: 1.sw,
               padding: EdgeInsets.only(left: 16.sp, top: 24.sp, right: 16.sp),
@@ -61,15 +60,15 @@ class DetailInfo extends StatelessWidget {
                   SizedBox(
                     height: 4.h,
                   ),
-                  RatingContainer(),
+                  const RatingContainer(),
                   SizedBox(
                     height: 8.h,
                   ),
-                  FlickInfo(),
+                  const FlickInfo(),
                   SizedBox(
                     height: 8.h,
                   ),
-                  MyListBuilder(title: "Cast", size: 5),
+                  const MyListBuilder(title: "Cast", size: 5),
                 ],
               ),
             ),
@@ -109,18 +108,18 @@ class RatingContainer extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         RatingBar(
-            itemPadding: EdgeInsets.all(2),
+            itemPadding: const EdgeInsets.all(2),
             initialRating: 3.5,
             itemSize: 20,
             glowRadius: 0,
             glowColor: Colors.transparent,
             ratingWidget: RatingWidget(
-                full: Icon(
+                full: const Icon(
                   Icons.star,
                   color: Color(0xffe7134b),
                   size: 4,
                 ),
-                half: Icon(
+                half: const Icon(
                   Icons.star_half,
                   color: Color(0xffe7134b),
                   size: 4,
@@ -132,7 +131,8 @@ class RatingContainer extends StatelessWidget {
                 )),
             onRatingUpdate: (rating) {}),
         IconButton(
-            onPressed: () {}, icon: Icon(Icons.share, color: Color(0xffe7134b)))
+            onPressed: () {},
+            icon: const Icon(Icons.share, color: Color(0xffe7134b)))
       ],
     );
   }
@@ -145,7 +145,7 @@ class ImageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         height: 0.40.sh,
         child: Image.asset(
           "assets/images/irishman.jpg",

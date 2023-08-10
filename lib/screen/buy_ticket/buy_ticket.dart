@@ -24,13 +24,13 @@ class BuyTicket extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           centerTitle: true,
-          title: Text(
+          title: const Text(
             "Select Seats",
             style: TextStyle(color: Colors.white),
           ),
           leading: IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_ios_new_outlined,
                 color: Colors.white,
               )),
@@ -42,17 +42,18 @@ class BuyTicket extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.center,
-              child: Container(
+              child: SizedBox(
                 height: 250.w,
                 width: 250.w,
                 child: GridView.builder(
                     itemCount: 64,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 8, childAspectRatio: 1),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 8, childAspectRatio: 1),
                     itemBuilder: (context, index) {
                       return InkWell(
                         onTap: () {},
-                        child: Icon(
+                        child: const Icon(
                           Icons.event_seat,
                           color: Colors.grey,
                         ),
@@ -63,9 +64,9 @@ class BuyTicket extends StatelessWidget {
             SizedBox(
               height: 24.h,
             ),
-            Container(
+            SizedBox(
               width: 280.w,
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   SeatInfo(color: Colors.grey, title: "Available"),
@@ -87,8 +88,8 @@ class BuyTicket extends StatelessWidget {
                 selectionColor: Colors.black,
                 selectedTextColor: Colors.white,
                 deactivatedColor: Colors.green,
-                monthTextStyle: TextStyle(color: Colors.grey),
-                dayTextStyle: TextStyle(color: Colors.grey),
+                monthTextStyle: const TextStyle(color: Colors.grey),
+                dayTextStyle: const TextStyle(color: Colors.grey),
                 dateTextStyle: TextStyle(
                   color: Colors.grey,
                   fontSize: 24.sp,

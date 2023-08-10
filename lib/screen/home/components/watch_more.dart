@@ -12,7 +12,7 @@ class WatchMore extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8),
       padding: const EdgeInsets.all(4.0),
-      child: MyListBuilder(title: "Watch Later", size: 5),
+      child: const MyListBuilder(title: "Watch Later", size: 5),
     );
   }
 }

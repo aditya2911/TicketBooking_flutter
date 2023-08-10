@@ -65,9 +65,9 @@ class MovieCarousel extends StatelessWidget {
                     Image.asset("assets/images/sintel_title.png"),
                     SizedBox(
                       width: 180.w,
-                      child: Row(
+                      child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: const [
+                        children: [
                           Text("2022"),
                           Text("."),
                           Text("Hindi"),
