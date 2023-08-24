@@ -28,8 +28,16 @@ class HomeWidget extends ConsumerWidget {
               child: ListView(
                 children: const [
                   MovieCarousel(),
-                  WatchMore(),
-                  WatchMore(),
+                  WatchMore(
+                    title: "Recommendations",
+                    url:
+                        "http://localhost:8080/api/v1/movies/fetchMovies?page=1&size=5",
+                  ),
+                  WatchMore(
+                    title: "Watch More",
+                    url:
+                        "http://localhost:8080/api/v1/movies/fetchMovies?page=0&size=5",
+                  ),
                 ],
               ),
             ),

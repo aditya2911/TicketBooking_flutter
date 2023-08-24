@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ticket_booking/screen/sign_up/sign_up.dart';
+import 'package:ticket_booking/screen/home/home.dart';
+import 'package:ticket_booking/services/fetch_movies.dart';
 
+final moviesProvider = Provider<FetchMovies>((ref) => FetchMovies());
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
               bodyLarge: TextStyle(color: Colors.green),
             ),
           ),
-          home: const SignUp(),
+          home: const HomeWidget(),
         );
       },
     );

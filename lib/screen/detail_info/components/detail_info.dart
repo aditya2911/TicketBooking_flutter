@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ticket_booking/common_components/my_list_builder.dart';
+import 'package:ticket_booking/common_components/video_player_view.dart';
+import 'package:ticket_booking/screen/buy_ticket/buy_ticket.dart';
+
+import '../../../model/movies.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar({super.key});
@@ -23,22 +27,21 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 }
 
 class DetailInfo extends StatelessWidget {
-  const DetailInfo({super.key});
+  final Movies data;
+  const DetailInfo({required this.data, super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
       bottomNavigationBar: const getBottomNavigationBar(),
-      extendBodyBehindAppBar: true,
       extendBody: true,
-      backgroundColor: const Color.fromARGB(255, 25, 26, 31),
-      appBar: const MyAppBar(),
+      backgroundColor: Colors.black,
       body: Align(
         alignment: Alignment.topCenter,
         child: ListView(
           children: [
-            const ImageContainer(),
+            ImageContainer(data: data),
             Container(
               width: 1.sw,
               padding: EdgeInsets.only(left: 16.sp, top: 24.sp, right: 16.sp),
@@ -53,7 +56,7 @@ class DetailInfo extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      "The Irish Man",
+                      data.getTitle,
                       style: TextStyle(fontSize: 28.sp),
                     ),
                   ),
@@ -68,7 +71,12 @@ class DetailInfo extends StatelessWidget {
                   SizedBox(
                     height: 8.h,
                   ),
-                  const MyListBuilder(title: "Cast", size: 5),
+                  const MyListBuilder(
+                    title: "Cast",
+                    size: 5,
+                    path:
+                        "http://localhost:8080/api/v1/movies/fetchMovies?page=0&size=5",
+                  ),
                 ],
               ),
             ),
@@ -139,17 +147,19 @@ class RatingContainer extends StatelessWidget {
 }
 
 class ImageContainer extends StatelessWidget {
+  final Movies data;
   const ImageContainer({
     super.key,
+    required this.data,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
         height: 0.40.sh,
-        child: Image.asset(
-          "assets/images/irishman.jpg",
-          fit: BoxFit.cover,
+        width: 100.sw,
+        child: VideoPlayerView(
+          url: data.getYoutubeLink,
         ));
   }
 }
@@ -166,7 +176,13 @@ class getBottomNavigationBar extends StatelessWidget {
       width: 80.sw,
       height: 40.h,
       child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => const BuyTicket(),
+              ),
+            );
+          },
           child: Text(
             "Book Tickets",
             style: TextStyle(fontSize: 14.sp),
