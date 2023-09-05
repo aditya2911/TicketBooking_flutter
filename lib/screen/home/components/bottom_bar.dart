@@ -32,13 +32,13 @@ class BottomBar extends StatelessWidget {
                   Icons.search,
                   size: 20,
                 ),
-                label: "Home"),
+                label: "Search"),
             BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.home,
+                  Icons.settings,
                   size: 20,
                 ),
-                label: "Home")
+                label: "Settings")
           ]),
     );
   }

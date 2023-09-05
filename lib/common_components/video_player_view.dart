@@ -17,6 +17,7 @@ class _VideoPlayerViewState extends ConsumerState<VideoPlayerView> {
   late ChewieController _chewieController;
   @override
   void initState() {
+    super.initState();
     _videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(
         "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"));
 
