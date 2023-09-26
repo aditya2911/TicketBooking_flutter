@@ -35,71 +35,81 @@ class BuyTicket extends StatelessWidget {
                 color: Colors.white,
               )),
         ),
-        body: ListView(
+        body: Column(
           children: [
-            SizedBox(
-              height: 24.h,
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: SizedBox(
-                height: 250.w,
-                width: 250.w,
-                child: GridView.builder(
-                    itemCount: 64,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 8, childAspectRatio: 1),
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {},
-                        child: const Icon(
-                          Icons.event_seat,
-                          color: Colors.grey,
-                        ),
-                      );
-                    }),
-              ),
-            ),
-            SizedBox(
-              height: 24.h,
-            ),
-            SizedBox(
-              width: 280.w,
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  SeatInfo(color: Colors.grey, title: "Available"),
-                  SeatInfo(color: Colors.white, title: "Booked"),
-                  SeatInfo(color: Colors.red, title: "Selected"),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 24.h,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 4.w),
-              child: DatePicker(
-                DateTime.now(),
-                height: MediaQuery.of(context).size.width < 400 ? 90.h : 70.h,
-                animateToSelection: true,
-                initialSelectedDate: DateTime.now(),
-                selectionColor: Colors.black,
-                selectedTextColor: Colors.white,
-                deactivatedColor: Colors.green,
-                monthTextStyle: const TextStyle(color: Colors.grey),
-                dayTextStyle: const TextStyle(color: Colors.grey),
-                dateTextStyle: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 24.sp,
-                  fontWeight: FontWeight.w500,
-                ),
+            DatePicker(
+              DateTime.now(),
+              height: MediaQuery.of(context).size.width < 400 ? 90.h : 70.h,
+              animateToSelection: true,
+              initialSelectedDate: DateTime.now(),
+              selectionColor: Colors.black,
+              selectedTextColor: Colors.white,
+              deactivatedColor: Colors.green,
+              monthTextStyle: const TextStyle(color: Colors.grey),
+              dayTextStyle: const TextStyle(color: Colors.grey),
+              dateTextStyle: TextStyle(
+                color: Colors.grey,
+                fontSize: 24.sp,
+                fontWeight: FontWeight.w500,
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class SeatBuilder extends StatelessWidget {
+  const SeatBuilder({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: [
+        SizedBox(
+          height: 24.h,
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: SizedBox(
+            height: 250.w,
+            width: 250.w,
+            child: GridView.builder(
+                itemCount: 64,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 8, childAspectRatio: 1),
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {},
+                    child: const Icon(
+                      Icons.event_seat,
+                      color: Colors.grey,
+                    ),
+                  );
+                }),
+          ),
+        ),
+        SizedBox(
+          height: 24.h,
+        ),
+        SizedBox(
+          width: 280.w,
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              SeatInfo(color: Colors.grey, title: "Available"),
+              SeatInfo(color: Colors.white, title: "Booked"),
+              SeatInfo(color: Colors.red, title: "Selected"),
+            ],
+          ),
+        ),
+        SizedBox(
+          height: 24.h,
+        ),
+      ],
     );
   }
 }

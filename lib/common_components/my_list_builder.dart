@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../main.dart';
 import '../model/movies.dart';
-import '../screen/detail_info/components/detail_info.dart';
+import '../screen/detail_info/detail_info.dart';
 
 final moviesDataProvider =
     FutureProvider.family<List<Movies>, String>((ref, path) async {
