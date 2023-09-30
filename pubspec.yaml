@@ -37,7 +37,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   animations: ^2.0.7
-  flutter_riverpod: ^2.3.2
+  flutter_riverpod: ^2.4.1
   dio: ^5.0.3
   pixel_perfect: ^1.1.1
   responsive_sizer: ^3.1.1
@@ -50,6 +50,8 @@ dependencies:
   cached_network_image: ^3.2.3
   chewie: ^1.7.0
   video_player: ^2.7.0
+  intl: ^0.18.1
+  
 
 dev_dependencies:
   flutter_test:

@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../buy_ticket/buy_ticket.dart';
 
-class getBottomNavigationBar extends StatelessWidget {
-  const getBottomNavigationBar({
+class GetBottomNavigationBar extends StatelessWidget {
+  final int id;
+  const GetBottomNavigationBar({
     super.key,
+    required this.id,
   });
 
   @override
@@ -18,7 +20,7 @@ class getBottomNavigationBar extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (context) => const BuyTicket(),
+                builder: (context) => BuyTicket(id),
               ),
             );
           },

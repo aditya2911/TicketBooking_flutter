@@ -30,8 +30,7 @@ class HomeWidget extends ConsumerWidget {
                   MovieCarousel(),
                   WatchMore(
                     title: "Recommendations",
-                    url:
-                        "http://localhost:8080/api/v1/movies/fetchMovies?page=1&size=5",
+                    url: " ",
                   ),
                   WatchMore(
                     title: "Watch More",

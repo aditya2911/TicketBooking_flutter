@@ -4,13 +4,16 @@ part 'movies.g.dart';
 
 @JsonSerializable()
 class Movies {
+  final int id;
+
   final String title;
   final String releaseDate;
   final String genre;
   final String youtubeLink;
   final String imageLink;
-  Movies(this.title, this.releaseDate, this.genre, this.youtubeLink,
+  Movies(this.id, this.title, this.releaseDate, this.genre, this.youtubeLink,
       this.imageLink);
+  get getId => id;
 
   String get getTitle {
     return title;

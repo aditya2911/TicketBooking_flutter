@@ -87,9 +87,9 @@ class MyListBuilder extends ConsumerWidget {
                           )),
                     );
                   }),
-              error: (error, StackTrace) {
-                print(StackTrace.toString());
-                return Text(StackTrace.toString());
+              error: (error, stackTrace) {
+                debugPrint(stackTrace.toString());
+                return Text(stackTrace.toString());
               },
               loading: () => ListView.builder(
                   scrollDirection: Axis.horizontal,

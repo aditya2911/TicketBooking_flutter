@@ -11,12 +11,12 @@ import 'components/rating_container.dart';
 class DetailInfo extends StatelessWidget {
   final Movies data;
   const DetailInfo({required this.data, super.key});
-
   @override
   Widget build(BuildContext context) {
+    debugPrint(data.id.toString());
     return SafeArea(
         child: Scaffold(
-      bottomNavigationBar: const getBottomNavigationBar(),
+      bottomNavigationBar: GetBottomNavigationBar(id: data.id),
       extendBody: true,
       backgroundColor: Colors.black,
       body: Align(
