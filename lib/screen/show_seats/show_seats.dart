@@ -149,10 +149,6 @@ class _ShowSeatsState extends ConsumerState<ShowSeats> {
               double spacing = 3;
               int seatSize = 25;
 
-              double calculateWidth =
-                  (cols * seatSize) + ((cols - 1 * spacing));
-              double calculateHeight = rows * (seatSize + spacing);
-
               List<SeatNumber> bookings = [];
               return Column(
                 children: [

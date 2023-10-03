@@ -13,7 +13,8 @@ import 'components/show_info_container.dart';
 final showParameterProvider =
     StateProvider<ShowParameter>((ref) => ShowParameter("2", "0118-09-2023"));
 
-final showDataProvider = FutureProvider<List<CinemaShows>>((ref) async {
+final showDataProvider =
+    FutureProvider.autoDispose<List<CinemaShows>>((ref) async {
   final showParameter = ref.watch(showParameterProvider);
   return await ref
       .read(showProvider)
