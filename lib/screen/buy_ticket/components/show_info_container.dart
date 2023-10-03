@@ -5,7 +5,9 @@ import '../../show_seats/show_seats.dart';
 
 class ShowInfoContainer extends StatelessWidget {
   final CinemaShows cinemaShow;
+  final String movieID;
   const ShowInfoContainer(
+    this.movieID,
     this.cinemaShow, {
     super.key,
   });
@@ -42,6 +44,9 @@ class ShowInfoContainer extends StatelessWidget {
                         onTap: () => {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => ShowSeats(
+                                cinemaName: cinemaShow.getName,
+                                showID: cinemaShow.getTheShow(index).getShowID,
+                                movieId: movieID,
                                 collectionID:
                                     cinemaShow.shows![index].collectionId!),
                           ))

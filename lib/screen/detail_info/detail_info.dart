@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ticket_booking/common_components/my_list_builder.dart';
 
@@ -8,16 +9,25 @@ import 'components/flick_info.dart';
 import 'components/get_bottom_navigation_bar.dart';
 import 'components/rating_container.dart';
 
-class DetailInfo extends StatelessWidget {
+final MovieNameProvider = StateProvider<String>((ref) => "test");
+
+class DetailInfo extends ConsumerWidget {
   final Movies data;
   const DetailInfo({required this.data, super.key});
   @override
-  Widget build(BuildContext context) {
-    debugPrint(data.id.toString());
+  Widget build(BuildContext context, WidgetRef ref) {
+    Future.delayed(Duration.zero, () {
+      ref.read(MovieNameProvider.notifier).state = data.getTitle;
+    });
+
     return SafeArea(
         child: Scaffold(
       bottomNavigationBar: GetBottomNavigationBar(id: data.id),
       extendBody: true,
+      appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: Colors.black,
+      ),
       backgroundColor: Colors.black,
       body: Align(
         alignment: Alignment.topCenter,
@@ -54,7 +64,7 @@ class DetailInfo extends StatelessWidget {
                     height: 8.h,
                   ),
                   const MyListBuilder(
-                    title: "Cast",
+                    title: "You may also like",
                     size: 5,
                     path:
                         "http://localhost:8080/api/v1/movies/fetchMovies?page=0&size=5",

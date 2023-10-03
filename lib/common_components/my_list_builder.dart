@@ -55,36 +55,40 @@ class MyListBuilder extends ConsumerWidget {
                             builder: (context) =>
                                 DetailInfo(data: data[index])));
                       },
-                      child: Container(
-                          margin: const EdgeInsets.all(4),
-                          width: 100.w,
-                          height: 400.h,
-                          decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              borderRadius: BorderRadius.circular(4)),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: 120.h,
-                                child: CachedNetworkImage(
-                                    fit: BoxFit.cover,
-                                    imageUrl: data[index].imageLink),
-                              ),
-                              SizedBox(
-                                height: 20.h,
-                                width: 100.w,
-                                child: Text(
-                                  data[index].title,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      fontSize: 12.sp,
-                                      color: const Color(0xff98999d)),
-                                  textAlign: TextAlign.start,
+                      child: Flexible(
+                        child: Container(
+                            margin: const EdgeInsets.all(4),
+                            width: 100.w,
+                            decoration: BoxDecoration(
+                                color: Colors.transparent,
+                                borderRadius: BorderRadius.circular(4)),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 120.h,
+                                  child: CachedNetworkImage(
+                                      fit: BoxFit.cover,
+                                      imageUrl: data[index].imageLink),
                                 ),
-                              )
-                            ],
-                          )),
+                                const SizedBox(
+                                  height: 4,
+                                ),
+                                SizedBox(
+                                  height: 20.h,
+                                  width: 100.w,
+                                  child: Text(
+                                    data[index].title,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                        fontSize: 12.sp,
+                                        color: const Color(0xff98999d)),
+                                    textAlign: TextAlign.start,
+                                  ),
+                                )
+                              ],
+                            )),
+                      ),
                     );
                   }),
               error: (error, stackTrace) {

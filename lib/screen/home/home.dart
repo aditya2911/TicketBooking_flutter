@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pixel_perfect/pixel_perfect.dart';
 
-import 'components/bottom_bar.dart';
 import 'components/movie_carousel.dart';
 import 'components/watch_more.dart';
 
@@ -19,7 +18,7 @@ class HomeWidget extends ConsumerWidget {
       initOpacity: 0.0,
       child: SafeArea(
           child: Scaffold(
-        bottomNavigationBar: const BottomBar(),
+        //bottomNavigationBar: const BottomBar(),
         backgroundColor: const Color(0xff0f1014),
         extendBodyBehindAppBar: true,
         body: Column(
@@ -30,7 +29,8 @@ class HomeWidget extends ConsumerWidget {
                   MovieCarousel(),
                   WatchMore(
                     title: "Recommendations",
-                    url: " ",
+                    url:
+                        "http://localhost:8080/api/v1/movies/fetchMovies?page=1&size=5",
                   ),
                   WatchMore(
                     title: "Watch More",

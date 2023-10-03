@@ -3,10 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ticket_booking/screen/home/home.dart';
 import 'package:ticket_booking/services/fetch_movies.dart';
+import 'package:ticket_booking/services/fetch_seat_layout.dart';
 import 'package:ticket_booking/services/shows/fetch_shows.dart';
 
 final moviesProvider = Provider<FetchMovies>((ref) => FetchMovies());
 final showProvider = Provider<FetchShows>((ref) => FetchShows());
+final seatProvider = Provider<FetchSeatLayout>((ref) => FetchSeatLayout());
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }

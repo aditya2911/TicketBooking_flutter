@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 
 import '../model/movies.dart';
 
@@ -12,7 +11,7 @@ class FetchMovies {
         //   print(response.data['content'][0]["title"]);
         List<dynamic> data = response.data['content'];
         List<Movies> test = data.map((e) => Movies.fromJson(e)).toList();
-        debugPrint("hello ${test[0].getTitle}");
+        //    debugPrint("hello ${test[0].getTitle}");
         return test;
       } else {
         throw FetchDataException(

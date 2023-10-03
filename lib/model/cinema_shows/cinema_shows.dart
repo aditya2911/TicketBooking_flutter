@@ -20,6 +20,10 @@ class CinemaShows {
 
   CinemaShows({this.cinemaId, this.name, this.shows});
 
+  Show getTheShow(int index) {
+    return shows![index];
+  }
+
   @override
   String toString() {
     return 'CinemaShows(cinemaId: $cinemaId, name: $name, shows: $shows)';

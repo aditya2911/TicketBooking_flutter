@@ -2,6 +2,7 @@ import 'package:date_picker_timetable/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ticket_booking/main.dart';
 import 'package:ticket_booking/model/cinema_shows/cinema_shows.dart';
 import 'package:ticket_booking/services/shows/show_parameter.dart';
@@ -14,7 +15,6 @@ final showParameterProvider =
 
 final showDataProvider = FutureProvider<List<CinemaShows>>((ref) async {
   final showParameter = ref.watch(showParameterProvider);
-  debugPrint("provider date ${showParameter.date}");
   return await ref
       .read(showProvider)
       .fetchShowsByIdAndDate(showParameter.id, showParameter.date);
@@ -63,7 +63,9 @@ class _BuyTicketState extends ConsumerState<BuyTicket> {
             style: TextStyle(color: Colors.white),
           ),
           leading: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
               icon: const Icon(
                 Icons.arrow_back_ios_new_outlined,
                 color: Colors.white,
@@ -84,7 +86,6 @@ class _BuyTicketState extends ConsumerState<BuyTicket> {
                 dayTextStyle: const TextStyle(color: Colors.grey),
                 onDateChange: (selectedDate) {
                   String date1 = DateFormat('dd-MM-yyyy').format(selectedDate);
-                  debugPrint("on change $date1");
 
                   ref.read(showParameterProvider.notifier).state =
                       ShowParameter(widget.id.toString(), date1);
@@ -99,7 +100,6 @@ class _BuyTicketState extends ConsumerState<BuyTicket> {
             Expanded(
               child: showData.when(data: (output) {
                 final int dataLength = output.length;
-                debugPrint(dataLength.toString());
                 return SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(16),
@@ -108,8 +108,10 @@ class _BuyTicketState extends ConsumerState<BuyTicket> {
                         FractionallySizedBox(
                           widthFactor: 1,
                           child: Column(
-                              children: List.generate(dataLength,
-                                  (index) => ShowInfoContainer(output[index]))),
+                              children: List.generate(
+                                  dataLength,
+                                  (index) => ShowInfoContainer(
+                                      widget.id.toString(), output[index]))),
                         ),
                       ],
                     ),
@@ -130,76 +132,23 @@ class _BuyTicketState extends ConsumerState<BuyTicket> {
   }
 }
 
-class SeatBuilder extends StatelessWidget {
-  const SeatBuilder({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        SizedBox(
-          height: 24.h,
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: SizedBox(
-            height: 250.w,
-            width: 250.w,
-            child: GridView.builder(
-                itemCount: 64,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 8, childAspectRatio: 1),
-                itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () {},
-                    child: const Icon(
-                      Icons.event_seat,
-                      color: Colors.grey,
-                    ),
-                  );
-                }),
-          ),
-        ),
-        SizedBox(
-          height: 24.h,
-        ),
-        SizedBox(
-          width: 280.w,
-          child: const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SeatInfo(color: Colors.grey, title: "Available"),
-              SeatInfo(color: Colors.white, title: "Booked"),
-              SeatInfo(color: Colors.red, title: "Selected"),
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 24.h,
-        ),
-      ],
-    );
-  }
-}
-
 class SeatInfo extends StatelessWidget {
-  final Color color;
   final String title;
+  final String path;
   const SeatInfo({
     super.key,
     required this.title,
-    required this.color,
+    required this.path,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(
-          Icons.event_seat,
-          color: color,
+        SvgPicture.asset(
+          path,
+          height: 25,
+          width: 25,
         ),
         SizedBox(
           width: 8.w,

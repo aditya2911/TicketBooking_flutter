@@ -51,7 +51,8 @@ dependencies:
   chewie: ^1.7.0
   video_player: ^2.7.0
   intl: ^0.18.1
-  
+  book_my_seat: ^1.0.1
+  flutter_svg: ^1.0.2
 
 dev_dependencies:
   flutter_test:
@@ -81,6 +82,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/fonts/
+    - assets/svg/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
